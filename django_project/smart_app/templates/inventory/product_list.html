@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Stock des Produits</title></head>
+<body>
+    <h1>Catalogue des Produits</h1>
+    <a href="{% url 'product_create' %}">+ Ajouter un produit</a> | 
+    <a href="{% url 'create_order' %}">Nouvelle Commande</a>
+    <table border="1">
+        <tr>
+            <th>Nom</th>
+            <th>Catégorie</th>
+            <th>Prix</th>
+            <th>Stock</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price }} €</td>
+            <td>{{ product.quantity_in_stock }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

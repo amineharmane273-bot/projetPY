@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Nouvelle Commande</title></head>
+<body>
+    <h1>Passer une commande</h1>
+    {% if messages %}
+        {% for message in messages %}<p style="color:red">{{ message }}</p>{% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Client :</label>
+        <select name="customer_id">
+            {% for c in customers %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}
+        </select><br>
+
+        <label>Produit :</label>
+        <select name="product_id">
+            {% for p in products %}<option value="{{ p.id }}">{{ p.name }} (Stock: {{ p.quantity_in_stock }})</option>{% endfor %}
+        </select><br>
+
+        <label>Quantité :</label>
+        <input type="number" name="quantity" required>
+
+        <button type="submit">Valider la commande</button>
+    </form>
+</body>
+</html>

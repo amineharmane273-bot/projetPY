@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Inscription Client</title></head>
+<body>
+    <h1>Enregistrer un nouveau client</h1>
+    {% if messages %}
+        {% for message in messages %}<p style="color:red">{{ message }}</p>{% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Inscrire</button>
+    </form>
+</body>
+</html>

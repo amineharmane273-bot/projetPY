@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Historique</title></head>
+<body>
+    <h1>Historique des Ventes</h1>
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Produits</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.order_date }}</td>
+            <td>{{ order.customer.name }}</td>
+            <td>
+                <ul>
+                    {% for item in order.items.all %}
+                        <li>{{ item.product.name }} (x{{ item.quantity }})</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'product_list' %}">Retour au stock</a>
+</body>
+</html>
